@@ -20,6 +20,7 @@ window/size/width=150
 window/size/height=275
 window/size/test_width=270
 window/size/test_height=480
+window/handheld/orientation="portrait"
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
