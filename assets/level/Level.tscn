@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/level/sprites/desert-backgorund.png" type="Texture" id=3]
 [ext_resource path="res://assets/level/sprites/clouds.png" type="Texture" id=4]
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" groups=["level"]]
 script = ExtResource( 2 )
 
 [node name="Bg_Music" type="AudioStreamPlayer" parent="."]
@@ -22,11 +22,11 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="ParallaxBackground2-cloud1" type="ParallaxBackground" parent="."]
-offset = Vector2( 0, -15 )
-transform = Transform2D( 1, 0, 0, 1, 0, -15 )
+offset = Vector2( 0, 5 )
+transform = Transform2D( 1, 0, 0, 1, 0, 5 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2-cloud1"]
-motion_mirroring = Vector2( 0, 275 )
+motion_mirroring = Vector2( 0, 290 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground2-cloud1/ParallaxLayer"]
 modulate = Color( 1, 1, 1, 0.815686 )

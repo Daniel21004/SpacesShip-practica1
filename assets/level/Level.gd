@@ -16,4 +16,4 @@ func _physics_process(delta): # Esta funcion se ejecuta una vez en cada fotogram
 	# El vector2 contiene la informacion de direccion =, la cual sirve para especificar a donde debe moverse, mas la multiplicaciond de la velocidad, que en este caso es 8, y la multiplicacion de delta, para que la velocidad que se asigne se mantenga cosntante
 	
 	get_node("ParallaxBackground2-cloud1").scroll_base_offset += Vector2(0,1) * 24 * delta;	# como cloud1, es la ultima nube, esta debe pasar mas lento
-	get_node("ParallaxBackground3-cloud2").scroll_base_offset += Vector2(0,2) * 34 *delta; # Aqui estaria yendo de 3 en 3 ha 34 fps
+	get_node("ParallaxBackground3-cloud2").scroll_base_offset += Vector2(0,1) * 34 *delta; # Aqui estaria yendo de 3 en 3 ha 34 fps
