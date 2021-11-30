@@ -16,7 +16,7 @@ func _physics_process(delta):  # Recuerda que esta funcio sirve para simular cos
 	animation_ctrl();
 	motion = move_and_collide(motion * delta); # controla el movimiento y la multiplica por delta, para que esta sea constante, move_and_collide, es un metodo comun para mover cuerpos fisicos.
 	
-	
+
 func _input(event): #Funcion nativa de godot, que captura un evento de entrada y actua de acuerdo a las lineas de codigo que tiene dentro de el 
 	if event.is_action_pressed("ui_accept") and canShoot: # Verificamos que aplastaron la tecla "Space" y si pueden dispara
 		shoot_ctrl(); # En caso sea verdad, se ejecutar el "shoot_ctrl()"
@@ -38,9 +38,9 @@ func motion_ctrl():  # Con esta funcion controlaremos la variable motion que es 
 		
 	#Limitar hacia donde puede ir
 	
-	position.x = clamp(position.x, 0 , screenSize); # Limitamos hacia donde se puede mover el jugador, para que no salga de la pantalla, para eso usamos la posicion del nodo que contiene el script, y el metodo clamp que recibe tres parametros:  clamp(posicionActual, posicionMinima, posicionMaxima)
+	position.x = clamp(position.x, 0 , screenSize.x); # Limitamos hacia donde se puede mover el jugador, para que no salga de la pantalla, para eso usamos la posicion del nodo que contiene el script, y el metodo clamp que recibe tres parametros:  clamp(posicionActual, posicionMinima, posicionMaxima)
 	# En este caso la posicion actual va a ser "position.x", porque contiene la poscion actual donde sea que se encuentre la nave en el eje x. La posicion minima, va a ser cero. La posicion maxima, va a ser el tamaño de la pantalla, por eso declaramos una variable "screenSize", que contiene el tamaño de la ventana
-	position.y = clamp(position.y, 0 , screenSize);
+	position.y = clamp(position.y, 0 , screenSize.y); # Recuerda indicar siempre los ejes cuando se trata de tamaños o vectores
 	
 	
 	#Comportamiento de las animaiciones, recuerda que cualquier comportamiento debe de estar en funciones
@@ -60,8 +60,8 @@ func shoot_ctrl():
 	get_tree().call_group("level","add_child", shoot); # añade el nodo como hijo de los nodos que se encuentre dentro del grupo "level"
 	
 	
-	# En la linea 50, instanciamos el Shoot, para poder trabajar con el en esta escena
-	# En la linea 51, simplemente le indicamos la posicion donde queremos que salga
-	# En la linea 52, instanciamos el nodo con la escena, accediendo al arbol de escenas e instanciadolo como un nodo hioj, mediante un grupo creado en la escena level
+	# En la linea 57, instanciamos el Shoot, para poder trabajar con el en esta escena
+	# En la linea 58, simplemente le indicamos la posicion donde queremos que salga
+	# En la linea 60, instanciamos el nodo con la escena, accediendo al arbol de escenas e instanciadolo como un nodo hioj, mediante un grupo creado en la escena level
 	
 	

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/level/music/Common Fight.ogg" type="AudioStream" id=1]
 [ext_resource path="res://assets/level/Level.gd" type="Script" id=2]
 [ext_resource path="res://assets/level/sprites/desert-backgorund.png" type="Texture" id=3]
 [ext_resource path="res://assets/level/sprites/clouds.png" type="Texture" id=4]
+[ext_resource path="res://assets/player/KinematicBody2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/enemy/Area2D.tscn" type="PackedScene" id=6]
 
 [node name="Level" type="Node2D" groups=["level"]]
 script = ExtResource( 2 )
@@ -46,3 +48,9 @@ modulate = Color( 1, 1, 1, 0.462745 )
 position = Vector2( 0, -85 )
 texture = ExtResource( 4 )
 centered = false
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 125, 300 )
+
+[node name="Area2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 118, 65 )
