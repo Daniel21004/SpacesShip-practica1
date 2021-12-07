@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/hud/Title_Style.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/hud/Standart_Style.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/hud/music/Game Over.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/hud/HUD.gd" type="Script" id=4]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 4 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 145.0
+margin_bottom = 15.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+margin_right = 59.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 2 )
+text = "Score:"
+
+[node name="score" type="Label" parent="MarginContainer/HBoxContainer"]
+margin_left = 63.0
+margin_right = 73.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 2 )
+text = "0"
+
+[node name="GAMEOVER" type="VBoxContainer" parent="."]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 2.0
+margin_top = -25.0
+margin_right = 2.0
+margin_bottom = 25.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lblGameOver" type="Label" parent="GAMEOVER"]
+anchor_left = 0.00666667
+anchor_right = 0.00666667
+margin_left = 2.0
+margin_right = 2.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 1 )
+text = "GAME OVER"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GAMEOVER"]
+margin_top = 29.0
+margin_right = 150.0
+margin_bottom = 50.0
+
+[node name="restart" type="Button" parent="GAMEOVER/HBoxContainer"]
+anchor_top = 0.190476
+anchor_bottom = 0.190476
+margin_right = 83.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 2 )
+text = "Restart"
+flat = true
+
+[node name="menu" type="Button" parent="GAMEOVER/HBoxContainer"]
+anchor_top = 0.190476
+anchor_bottom = 0.190476
+margin_left = 87.0
+margin_right = 147.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 2 )
+text = "Menu"
+flat = true
+
+[connection signal="pressed" from="GAMEOVER/HBoxContainer/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="GAMEOVER/HBoxContainer/menu" to="." method="_on_menu_pressed"]

@@ -1,14 +1,21 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/level/music/Common Fight.ogg" type="AudioStream" id=1]
 [ext_resource path="res://assets/level/Level.gd" type="Script" id=2]
 [ext_resource path="res://assets/level/sprites/desert-backgorund.png" type="Texture" id=3]
 [ext_resource path="res://assets/level/sprites/clouds.png" type="Texture" id=4]
 [ext_resource path="res://assets/player/KinematicBody2D.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/enemy/Area2D.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/hud/HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/enemy/Area2D.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 269.128, 0, 0, 0, 0, 0, 191, 15, 0, 0, 0, 0, 139.203, 46, 0, 0, 0, 0, 93.5882, 16, 0, 0, 0, 0, 10.617, 0 )
+}
 
 [node name="Level" type="Node2D" groups=["level"]]
 script = ExtResource( 2 )
+Enemy = ExtResource( 7 )
 
 [node name="Bg_Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
@@ -52,5 +59,19 @@ centered = false
 [node name="KinematicBody2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 125, 300 )
 
-[node name="Area2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 118, 65 )
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2( -2.66765, 0 )
+scale = Vector2( 0.533827, 1 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 232.963, 0.994041 )
+rotation = -3.13366
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 6 )]
+
+[connection signal="tree_exiting" from="KinematicBody2D" to="CanvasLayer" method="_on_KinematicBody2D_tree_exiting"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="game_over" from="CanvasLayer" to="." method="_on_CanvasLayer_game_over"]
